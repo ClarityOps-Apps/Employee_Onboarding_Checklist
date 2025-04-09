@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+@layer base {
+  body {
+    @apply bg-gray-50;
+  }
+}
+
+@layer components {
+  .task-checkbox {
+    appearance: none;
+    @apply h-5 w-5 rounded border border-[#447384] bg-white cursor-pointer relative;
+  }
+
+  .task-checkbox:checked {
+    @apply bg-[#F65D36] border-[#447384];
+  }
+
+  .task-checkbox:checked::after {
+    content: '';
+    @apply absolute top-1/2 left-1/2 w-[8px] h-[12px] border-white border-r-2 border-b-2 rotate-45;
+    transform: translate(-50%, -65%) rotate(45deg);
+  }
+
+  .task-section-header {
+    @apply w-full px-4 py-3 flex items-center justify-between 
+    bg-[#447384] text-white rounded-t-lg hover:bg-[#3a6273] transition-colors;
+  }
+
+  .task-item {
+    @apply flex items-start gap-3 py-2 px-4 justify-between;
+  }
+
+  .task-content {
+    @apply flex items-start gap-3 flex-1;
+  }
+
+  .task-text {
+    @apply text-sm text-gray-700;
+  }
+
+  .task-text-checked {
+    @apply line-through opacity-70;
+  }
+
+  .task-assignee {
+    @apply text-sm text-gray-600 min-w-[80px] text-right;
+  }
+}
